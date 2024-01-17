@@ -1,0 +1,50 @@
+import DashboardLayout from "@/layout/dashboardLayout";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSession, signOut } from "next-auth/react";
+export default function Home() {
+  const { data: session, status } = useSession();
+  const [data1, setData1] = useState([]);
+  const [t, i18n] = useTranslation();
+
+  useEffect(() => {
+    getData1().then((val) => {
+      setData1(val.meta);
+    });
+  }, []);
+
+  if (data1.length == 0) {
+    return <></>;
+  }
+  if (!session) window.location.href = "/dashboard";
+  if (session && status != "loading")
+    return (
+      <div className="pt-[100px] px-8  pb-16  xl:px-32 ">
+        <ul className="">
+          {data1.map((val) => {
+            return (
+              <li href={"clubs/" + val.id} key={val.id} className=" p-2  w-1/2">
+                <h2 className="  bg-[#333] bg-opacity-30 border-main border-2 rounded-lg     p-2">
+                  <div>
+                    {val.menu} ---
+                    <b>
+                      <Link href={"seo/" + val.id}>{val.name}</Link>
+                    </b>
+                  </div>
+                </h2>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+}
+
+async function getData1() {
+  const res = await fetch("/api/meta");
+  return await res.json();
+}
+
+Home.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;

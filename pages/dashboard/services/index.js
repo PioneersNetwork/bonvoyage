@@ -8,8 +8,10 @@ export default function Home() {
   const { data: session, status } = useSession();
   const [data1, setData1] = useState([]);
   const [t, i18n] = useTranslation();
+let window = null;
 
   useEffect(() => {
+    window= document.window;    
     getData().then((val) => {
       console.log(val);
       setData1(val.services);
@@ -19,7 +21,7 @@ export default function Home() {
   if (data1.length == 0) {
     return <></>;
   }
-  if (!session) window.location.href = "/dashboard";
+  if (!session && window!=null) window.location.href = "/dashboard";
   if (session && status != "loading")
     return (
       <div className="pt-[100px] px-8  pb-16  xl:px-32 ">

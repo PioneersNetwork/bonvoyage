@@ -17,8 +17,9 @@ export default function Home({ name }) {
   const [DescriptionEn, setDescriptionEn] = useState(null);
   const [DescriptionAr, setDescriptionAr] = useState(null);
   const [t, i18n] = useTranslation();
-
+  let window = null;
   useEffect(() => {
+    window=document.window;
     getData1(name).then((val) => {
       setData1(val.owners);
       setDescriptionEn(val.owners[name].en);
@@ -48,7 +49,7 @@ export default function Home({ name }) {
   if (!data1) {
     return <></>;
   }
-  if (!session) window.location.href = "/dashboard";
+  if (!session && window!=null) window.location.href = "/dashboard";
   if (session && status != "loading")
     return (
       <div className=" pt-8  pb-16  xl:px-32   ">

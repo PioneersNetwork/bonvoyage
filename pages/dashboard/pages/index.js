@@ -13,11 +13,15 @@ export default function Home() {
     { name: "rent" },
   ]);
   const [t, i18n] = useTranslation();
+  let window =null;
+  useEffect(()=>{
+    window = document.window;
+  },[])
 
   if (data1.length == 0) {
     return <></>;
   }
-  if (!session) window.location.href = "/dashboard";
+  if (!session && window!=null) window.location.href = "/dashboard";
   if (session && status != "loading")
     return (
       <div className="pt-[100px] px-8  pb-16  xl:px-32 ">

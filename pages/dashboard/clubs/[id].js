@@ -7,6 +7,7 @@ import { useSession, signOut } from "next-auth/react";
 
 import { toBase64 } from "@/utils/base64";
 import toast from "react-hot-toast";
+let window=null;
 export default function Home({ id }) {
   const { data: session, status } = useSession();
   const route = useRouter();
@@ -40,6 +41,7 @@ export default function Home({ id }) {
   const [t, i18n] = useTranslation();
 
   useEffect(() => {
+    window= document.window;
     getData1(id).then((val) => {
       setData1(val.club[0]);
       setTitleEn(val.club[0].title.en);
@@ -129,7 +131,7 @@ export default function Home({ id }) {
   if (!data1) {
     return <></>;
   }
-  if (!session) window.location.href = "/dashboard";
+  if (!session && window!=null) window.location.href = "/dashboard";
   if (session && status != "loading")
     return (
       <div className=" pt-8  pb-16  xl:px-32   ">

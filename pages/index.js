@@ -542,42 +542,42 @@ const Abound = () => {
   const clubs = [
     {
       name: "Marriott Club Son Antem",
-      link: "clups/1",
+      link: "clubs/1",
       image: "/images/project-01.webp",
     },
     {
       name: "Marriott’s Playa Andaluza",
-      link: "clups/2",
+      link: "clubs/2",
       image: "/images/project-02.webp",
     },
     {
       name: "Marriott's Village d'ile-de-France",
-      link: "clups/3",
+      link: "clubs/3",
       image: "/images/project-03.webp",
     },
     {
       name: "Marriott’s Newport Coast Villas",
-      link: "clups/4",
+      link: "clubs/4",
       image: "/images/project-04.webp",
     },
     {
       name: "Grand Residences by Marriott - Mayfair - London 47 Park Street",
-      link: "clups/5",
+      link: "clubs/5",
       image: "/images/project-05.webp",
     },
     {
       name: "Marriott’s Marbella Beach Resort",
-      link: "clups/6",
+      link: "clubs/6",
       image: "/images/project-06.webp",
     },
     {
       name: "Marriott's Ko Olina Beach Club",
-      link: "clups/42",
+      link: "clubs/42",
       image: "/images/oeYUlNRcpfCKYmHgXsId.webp",
     },
     {
       name: "Marriott's Phuket Beach Resort & Marriott’s Mai Khao Beach",
-      link: "clups/80",
+      link: "clubs/80",
       image: "/images/80-logo.webp",
     },
   ];

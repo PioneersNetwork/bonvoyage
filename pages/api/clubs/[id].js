@@ -13,6 +13,7 @@ export default async function ClubsID(req, res) {
       if (e.resort) e.resort = JSON.parse(e.resort);
       if (e.apartments) e.apartments = JSON.parse(e.apartments);
       if (e.amenities) e.amenities = JSON.parse(e.amenities);
+      if (e.calendar)e.calendar=JSON.parse(e.calendar);
     });
     [meta] = await connect.query("SELECT * FROM metas WHERE name = ? limit 1", [
       club[0].name,

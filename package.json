@@ -29,6 +29,7 @@
     "react-i18next": "^13.2.2",
     "react-icons": "^4.10.1",
     "react-intersection-observer": "^9.5.2",
+    "react-multi-date-picker": "^4.4.1",
     "react-spring": "^9.7.2",
     "suneditor-react": "^3.6.1",
     "tailwindcss": "3.3.3"

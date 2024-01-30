@@ -7,21 +7,53 @@ import data from "../../staticData/countries.json";
 import { useTranslation } from "react-i18next";
 import Layout from "@/layout/Layout";
 import Head from "next/head";
-
+import { Calendar, DateObject } from "react-multi-date-picker";
+import DatePanel from "react-multi-date-picker/plugins/date_panel";
+import Footer from "react-multi-date-picker/plugins/range_picker_footer";
+import TheCalendar from "@/layout/ui/Calender";
 export default function Home({ id }) {
   const [t, i18n] = useTranslation();
-
+  const [calendarRange, setCalendarRange] = useState([]);
+  const [calendars,setCalenders]=useState([]);
+  const [months,setMonths]=useState([]);
   const route = useRouter();
   id = route.query["id"];
 
   const [club, setClub] = useState(null);
   const [images, setImages] = useState([]);
   const [meta, setMeta] = useState([]);
-
+  
   useEffect(() => {
     getData(id).then((val) => {
       setClub(val.club[0]);
       setMeta(val.meta[0]);
+      if (val.club[0].calendar?.length) {
+        setCalenders([]);
+        setCalendarRange([]);
+        setMonths([]);
+        let oldMonths = [];
+        let theCalendars =[];
+        val.club[0].calendar.forEach((e, i) => {
+          theCalendars.push({...e,month:new Date(e.start).getMonth()+1,year:new Date(e.start).getFullYear()})
+
+          var theMonth = new Date(e.start).getFullYear()+'-'+(new Date(e.start).getMonth())
+          if(oldMonths.filter(e=>e.monthYear==theMonth).length==0 && new Date(e.end)> new Date())
+          {
+            oldMonths.push({monthYear:theMonth,month:new Date(e.start).getMonth(),year:new Date(e.start).getFullYear()});
+            
+          console.log(months);
+        }
+          var range = [e.start, e.end];
+          
+          setCalendarRange((prev) => {
+            let ranges = prev;
+            ranges.push(range);
+            return [...ranges];
+          });
+        });
+        setMonths(oldMonths);
+        setCalenders(theCalendars);
+      }
       setImages(
         val.picture.map((val) => {
           return "/images/clup/" + val.name;
@@ -47,7 +79,7 @@ export default function Home({ id }) {
           {/* <Resort className="w-full lg:w-1/2 pt-8" club={club} />
           <Apartments className="w-full lg:w-1/2 pt-8" club={club} /> */}
           <Amenities club={club} />
-          <Availability club={club} />
+          {club.calendar &&<Availability club={club} calendarRange={calendarRange} months={months} calendars={calendars} />}
           <div className="w-full lg:w-1/2 pt-8">
             <iframe
               className=" w-full h-[340px]"
@@ -149,12 +181,12 @@ const Apartments = ({ club }) => {
     </div>
   );
 };
-const Availability = ({ club }) => {
+const Availability = ({ club,calendarRange,months,calendars }) => {
   const [t, i18n] = useTranslation();
-
+  const [mc,setMc]=useState(new DateObject());
   const [month, SetMonth] = useState();
-  console.log(club);
-  const months = [
+  const [update,setUpdate]=useState(false);
+  const monthsName = [
     "Jan",
     "Feb",
     "Mar",
@@ -172,31 +204,36 @@ const Availability = ({ club }) => {
     <div className="w-full lg:w-1/2 pt-8 p-4 ">
       <div className="border-[1px] border-black p-4">
         <h3 className=" text-4xl  text-black pb-6">{t("Availability")}</h3>
-        <div className=" w-11/12 flex p-2 overflow-x-auto bg-[#eee] ">
-          {months
-            .filter((val) => {
-              return club[val.toLowerCase()] != null;
-            })
-            .map((val) => {
+        <div className=" w-full flex p-2 overflow-x-auto bg-[#eee] ">
+          {months.map((val) => {
               return (
-                <span
+                <>
+                <button
                   onClick={() => {
-                    SetMonth(val.toLowerCase());
+                    
+                    SetMonth({...val});
+                    setMc(new DateObject({month:val.month+1,year:val.year,day:1}));
+                    
                   }}
                   key={val}
                   className="p-1 px-3 mx-1  blink_me rounded-3xl text-main bg-gray-500"
                 >
-                  {val}
-                </span>
+                  {monthsName[val.month]}
+                </button>
+                
+                </>
               );
             })}
         </div>
 
-        <p className="pt-3 pb-6">{month ? month.toUpperCase() : ""}</p>
-        <p
-          className="pt-3 text-[#666] font-base"
-          dangerouslySetInnerHTML={{ __html: club[month] }}
-        ></p>
+        
+        <p className="pt-3 text-[#666] font-base">
+         
+         <TheCalendar currentDate={mc} calendarRange={calendarRange} calendars={calendars} />
+          
+       
+        </p>
+        
       </div>
     </div>
   );

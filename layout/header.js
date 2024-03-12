@@ -228,7 +228,7 @@ const Header = () => {
                 key={el.name}
                 className={` ${open ? "block" : "hidden"} cursor-pointer`}
               >
-                <div className="  p-4  text-lg">
+                <div className="  p-4  text-lg uppercase">
                   <a
                     className="pt-1 flex justify-between"
                     onClick={() => {

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Layout from "@/layout/Layout";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Home({ id }) {
   const route = useRouter();
@@ -14,6 +15,7 @@ export default function Home({ id }) {
   const [t, i18n] = useTranslation();
 
   useEffect(() => {
+    setData();
     getData(id).then((val) => {
       setData(val.rental[0]);
       setMeta(val.meta[0]);
@@ -21,7 +23,11 @@ export default function Home({ id }) {
   }, [id]);
 
   if (!data) {
-    return <></>;
+    return (
+      <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center z-50">
+        <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+      </div>
+    );
   }
   return (
     <div className="pt-[100px]  pb-16  xl:px-32 ">

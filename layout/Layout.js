@@ -6,7 +6,7 @@ import { SessionProvider } from "next-auth/react";
 const Layout = ({ children }) => {
   return (
     <SessionProvider>
-      <div className=" w-full">
+      <div className=" w-full overflow-hidden">
         <Header />
         <main className=" min-h-screen">{children}</main>
         <Footer />

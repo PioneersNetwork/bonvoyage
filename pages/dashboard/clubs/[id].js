@@ -37,6 +37,7 @@ export default function Home({ id }) {
   const [oct, setoct] = useState(null);
   const [nov, setnov] = useState(null);
   const [decm, setdecm] = useState(null);
+  const [calendar,setCalendar]=useState();
   const [image, setImage] = useState();
   const [t, i18n] = useTranslation();
 
@@ -66,6 +67,7 @@ export default function Home({ id }) {
       setoct(val.club[0].oct);
       setnov(val.club[0].nov);
       setdecm(val.club[0].decm);
+      setCalendar(val.club[0].calendar);
     });
   }, [id]);
 

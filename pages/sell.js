@@ -18,7 +18,11 @@ export default function Home() {
   }, []);
 
   if (!data) {
-    return <></>;
+    return (
+      <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center z-50">
+        <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+      </div>
+    );
   }
   return (
     <div className="xl:px-32 px-8 ">

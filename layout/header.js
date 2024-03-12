@@ -228,18 +228,19 @@ const Header = () => {
                 key={el.name}
                 className={` ${open ? "block" : "hidden"} cursor-pointer`}
               >
-                <div className="flex justify-between p-4  text-lg">
-                  <div>{el.name}</div>
+                <div className="  p-4  text-lg">
                   <a
-                    className="pt-1"
+                    className="pt-1 flex justify-between"
                     onClick={() => {
                       if (openSup == el.name) {
-                        setOpenSup("");
+                        setOpenSup();
                       } else {
                         setOpenSup(el.name);
                       }
                     }}
                   >
+                    <div>{el.name}</div>
+
                     {openSup == el.name ? (
                       <IoIosArrowDown />
                     ) : (
@@ -258,7 +259,9 @@ const Header = () => {
                         key={index}
                         className="p-2  border-stone-600 border-b-[1px] px-4"
                       >
-                        <Link href={sup.link}>
+                        <Link onClick={()=>{
+                          setOpen();
+                        }} href={sup.link}>
                           <div>{sup.name}</div>
                         </Link>
                       </li>

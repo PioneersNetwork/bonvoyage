@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <title>Bonvoyage | Your Vacation Guide</title>
       </Head>
-      <body className=" ">
+      <body className="w-full">
         <Main />
         <NextScript />
       </body>

@@ -3,24 +3,43 @@ import Link from "next/link";
 import Layout from "@/layout/Layout";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 export default function Home() {
   const [t, i18n] = useTranslation();
 
   const [data, setData] = useState(null);
   const [clubs, setClubs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getData().then((val) => {
       setData(val.owner[0]);
       setClubs(val.clubs);
+      setIsLoading(false);
     });
   }, []);
 
   if (!data) {
-    return <></>;
+    return (
+      <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center z-50">
+        <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+      </div>
+    );
+  }
+  if (isLoading && !data) {
+    return (
+      <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center">
+        <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+      </div>
+    );
   }
   return (
     <div className="xl:px-32 px-8  ">
+      {isLoading && (
+        <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center">
+          <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+        </div>
+      )}
       <Hotel data={data} clubs={clubs} />
       <MainForm
         header={t("Why choose us?")}

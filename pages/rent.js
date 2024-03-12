@@ -4,6 +4,7 @@ import Link from "next/link";
 import Layout from "@/layout/Layout";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Image from "next/image";
 
 export default function Home() {
   const [data, setData] = useState(null);
@@ -17,7 +18,11 @@ export default function Home() {
   }, []);
 
   if (!data) {
-    return <>s</>;
+    return (
+      <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center z-50">
+        <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+      </div>
+    );
   }
   return (
     <div className="xl:px-32 px-8 ">

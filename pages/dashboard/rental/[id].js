@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useSession, signOut } from "next-auth/react";
 import { toBase64 } from "@/utils/base64";
 import toast from "react-hot-toast";
+import Image from "next/image";
 export default function Home({ id }) {
   const { data: session, status } = useSession();
   const route = useRouter();
@@ -18,7 +19,8 @@ export default function Home({ id }) {
   const [t, i18n] = useTranslation();
   let window = null;
   useEffect(() => {
-    window= document.window;
+    window = document.window;
+    setData1();
     getData1(id).then((val) => {
       setData1(val.rental[0]);
       setDescriptionEn(val.rental[0].description.en);
@@ -68,9 +70,13 @@ export default function Home({ id }) {
   };
 
   if (!data1) {
-    return <></>;
+    return (
+      <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center z-50">
+        <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+      </div>
+    );
   }
-  if (!session && window!=null) window.location.href = "/dashboard";
+  if (!session && window != null) window.location.href = "/dashboard";
   if (session && status != "loading")
     return (
       <div className=" pt-8  pb-16  xl:px-32   ">

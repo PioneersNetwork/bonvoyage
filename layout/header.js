@@ -147,11 +147,11 @@ const Header = () => {
             return (
               <li
                 key={el.name}
-                className=" hover:text-main cursor-pointer relative  group"
+                className=" hover:text-main cursor-pointer relative  group "
               >
                 <div className="flex justify-between p-4   text-base ">
                   <div
-                    className=" font-bold"
+                    className=" font-bold uppercase"
                     style={{ textShadow: "#000000b0 0 0 10px" }}
                   >
                     {t(el.name)}

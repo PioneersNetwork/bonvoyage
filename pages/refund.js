@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Home() {
   return (
-    <div className="xl:px-32 px-8 lg:px-32">
+    <div className="px-[16px] lg:px-32">
       <Hotel />
     </div>
   );

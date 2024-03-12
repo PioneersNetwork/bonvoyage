@@ -614,16 +614,16 @@ const ClubCard = ({ image, name, link, travel }) => {
       href={link}
       className={`${travel ? "lg:w-1/3" : "lg:w-1/4"} w-full p-2`}
     >
-      <div className="flex justify-center mx-4 pb-8 cursor-pointer w-full ">
+      <div className="flex justify-center mx-auto pb-8 cursor-pointer w-full ">
         <div>
           <Image
             src={image}
-            height={220}
-            width={270}
+            height={240}
+            width={320}
             alt={name}
-            className=" h-[220px] w-[270px] object-cover  hover:scale-105  duration-300 ease-in"
+            className=" h-[220px] w-[320px] object-cover  hover:scale-105  duration-300 ease-in"
           />
-          <div className="py-4 text-center text-[#886c3c] font-bold hover:text-main  text-lg max-w-[270px]">
+          <div className="py-4 text-center text-[#886c3c] font-bold hover:text-main  text-lg max-w-[320px]">
             {name}
           </div>
         </div>
@@ -746,12 +746,13 @@ const Services = () => {
 
   return (
     <div className="bg-white w-full  pt-16">
-      <div className=" ">
+      <div className="">
         <h3 className="pt-4 text-black text-center pb-8  text-4xl ">
           Our Services
         </h3>
         <div className="bg-[#333] w-[80px] h-[3px] m-auto  rounded-3xl mb-4"></div>
-        <div className="flex flex-wrap lg:mx-16 ">
+        <div className="overflow-x-auto">
+        <div className="flex flex-wrap lg:mx-16  min-w-max">
           {services.map((val) => {
             return (
               <ServicesCard
@@ -763,8 +764,8 @@ const Services = () => {
             );
           })}
         </div>
-
-        <div ref={counter} className="flex flex-wrap  lg:mx-16">
+        </div>
+        <div ref={counter} className="flex flex-wrap justify-center gap-[16px]  lg:mx-16">
           <div className="text-center py-8 lg:w-1/3">
             <div>more Than</div>
             <div className=" text-6xl py-2">
@@ -903,7 +904,7 @@ const Travel = () => {
         </h3>
         <div className="bg-[#333] w-[80px] h-[3px] m-auto  rounded-3xl mb-8"></div>
 
-        <div className="flex flex-wrap justify-center lg:mx-16">
+        <div className="flex flex-wrap justify-center items-center lg:mx-16">
           {timeshare.map((val) => {
             return (
               <ClubCard

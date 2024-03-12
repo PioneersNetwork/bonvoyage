@@ -13,7 +13,7 @@ export default function Home() {
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
   return (
-    <div className="xl:px-32 px-8">
+    <div className="px-[16px] lg:px-32">
       <Hotel />
       <Companies />
       <MainForm />

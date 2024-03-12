@@ -25,7 +25,7 @@ export default function Home() {
     );
   }
   return (
-    <div className="xl:px-32 px-8 ">
+    <div className="px-[16px] lg:px-32">
       <Hotel data={data} clubs={clubs} />
       <MainForm
         header={
@@ -83,7 +83,7 @@ const Hotel = ({ clubs, data }) => {
         <div className=" p-4 w-full lg:w-1/3">
           <img
             src="/images/owners/1.png"
-            className="w-[300px] h[600px] object-cover object-center m-auto"
+            className="w-[400px] h[600px] object-cover object-center m-auto"
           />
         </div>
 

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Home() {
   return (
-    <div className="xl:px-32 px-8">
+    <div className="lg:px-16 px-[16px]">
       <Hotel />
       <Companies />
       <MainForm />

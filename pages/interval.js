@@ -8,7 +8,7 @@ export default function Home() {
   const [t, i18n] = useTranslation();
 
   return (
-    <div className="xl:px-32 px-8 ">
+    <div className="px-[16px] lg:px-32">
       <Hotel />
       <Table />
       <p className="pt-3 text-[#666] w-full    font-bold">
@@ -77,7 +77,7 @@ const Hotel = () => {
           />
         </div>
 
-        <div className=" w-full lg:w-2/3 px-6 lg:pt-4">
+        <div className=" w-full lg:w-2/3 lg:pt-4">
           <h2 className=" text-4xl  text-[#333] pb-4">
             {t("Exchange with Interval International")}
           </h2>
@@ -260,7 +260,7 @@ const Card = ({ image, name, sub, index }) => {
 };
 const Table = () => {
   return (
-    <div className="pt-8">
+    <div className="pt-8 overflow-x-auto">
       <table className=" border-[1px] border-[#e9ecef] table-fixed">
         <tbody>
           <tr>

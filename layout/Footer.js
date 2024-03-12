@@ -52,7 +52,7 @@ const Footer = ({ showForm = false }) => {
   return (
     <footer className="w-full text-white">
       <div className="bg-center  bg-no-repeat bg-cover bg-fixed  relative z-[1]   font-normal bg-[url('/images/bg-03.jpg')]">
-        <div className="w-full h-full bg-[#636b70] opacity-90 px-20 lg:px-4 pt-9  pb-4">
+        <div className="w-full h-full bg-[#636b70] opacity-90 px-[16px] lg:px-4 pt-9  pb-4">
           <div className="flex flex-wrap w-full  md:justify-center">
             <div className="w-full   md:w-1/2  lg:w-1/4 pr-4 pl-4 ">
               <div className="">
@@ -423,7 +423,7 @@ const Footer = ({ showForm = false }) => {
 
       <div className=" bg-[#111] text-[#ccc] text-lg">
         <div className="xl:px-32 px-8 sm:px-4 txt-center p-tb-15 m-auto p-4 text-center">
-          Copyright @ 2023 All rights reserved.
+          Copyright @ 2024 All rights reserved.
         </div>
       </div>
     </footer>

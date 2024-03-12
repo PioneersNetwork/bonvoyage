@@ -24,7 +24,7 @@ let window = null;
   if (!session && window!=null) window.location.href = "/dashboard";
   if (session && status != "loading")
     return (
-      <div className="pt-[100px] px-8  pb-16  xl:px-32 ">
+      <div className="pt-[100px]  pb-16 px-[16px] lg:px-32">
         <div className="flex flex-wrap  justify-center">
           {data1.map((val) => {
             return (

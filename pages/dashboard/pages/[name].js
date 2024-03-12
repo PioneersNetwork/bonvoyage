@@ -52,7 +52,7 @@ export default function Home({ name }) {
   if (!session && window!=null) window.location.href = "/dashboard";
   if (session && status != "loading")
     return (
-      <div className=" pt-8  pb-16  xl:px-32   ">
+      <div className=" pt-8  pb-16  px-[16px] lg:px-32">
         <div className="border-main border-2 p-4 rounded-md  bg-opacity-5 bg-main">
           <div className="flex flex-wrap ">
             <div className="w-1/2 p-2">

@@ -18,7 +18,7 @@ export default function Home() {
     return <></>;
   }
   return (
-    <div className="xl:px-32 px-8">
+    <div className="px-[16px] lg:px-32">
       <Hotel />
       <Trans transport={data} />
       <MainForm />

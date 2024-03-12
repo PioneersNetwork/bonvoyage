@@ -92,7 +92,7 @@ export default function Home({ id }) {
         <meta name="keywords" content={meta.keywords}></meta>
       </Head>
       <Slider images={images} />
-      <div className="  mx-auto pt-4 px-8 lg:px-32 ">
+      <div className="  mx-auto pt-4 px-[16px] lg:px-32">
         <ClubBody club={club} />
         <div className="flex flex-wrap">
           {/* <Resort className="w-full lg:w-1/2 pt-8" club={club} />

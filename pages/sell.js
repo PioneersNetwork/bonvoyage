@@ -25,7 +25,7 @@ export default function Home() {
     );
   }
   return (
-    <div className="xl:px-32 px-8 ">
+    <div className="px-[16px] lg:px-32">
       <Hotel data={data} clubs={clubs} />
       <MainForm
         header={"Need to sell timeshare?"}
@@ -45,11 +45,11 @@ const Hotel = ({ data, clubs }) => {
       <div className="flex flex-wrap ">
         <div className=" p-4 w-full lg:w-1/3">
           <Image
-            width={300}
+            width={400}
             height={600}
             alt="sell"
             src="/images/owners/1.png"
-            className="w-[300px] h[600px] object-cover object-center m-auto"
+            className="object-cover object-center m-auto"
           />
         </div>
 
@@ -74,7 +74,7 @@ const Hotel = ({ data, clubs }) => {
             {t("specializing SPAIN, FRANCE, UK & THAILAND")}
           </p>
         </div>
-        <div className="flex flex-wrap pt-8  justify-center">
+        <div className="flex flex-wrap pt-8  justify-center items-center">
           {clubs.map((val) => {
             return (
               <ClubCard
@@ -95,17 +95,17 @@ const Hotel = ({ data, clubs }) => {
 const ClubCard = ({ image, name, link, sell, travel }) => {
   return (
     <Link href={link} className={` lg:w-1/3  w-full p-2`}>
-      <div className="flex justify-center pb-8 cursor-pointer w-full ">
+      <div className="flex justify-center items-center pb-8 cursor-pointer w-full ">
         <div>
           <img
             src={image}
-            className=" h-[220px] w-[270px] object-cover  hover:scale-105  duration-300 ease-in"
+            className=" h-[220px] w-[270px] object-cover  hover:scale-105 mx-auto  duration-300 ease-in"
           />
-          <div className="py-4 text-center text-[#886c3c] font-bold hover:text-main  text-lg max-w-[270px]">
+          <div className="py-4 text-center text-[#886c3c] font-bold hover:text-main mx-auto  text-lg max-w-[270px]">
             {name}
           </div>
           <p
-            className=" text-[#666]   text-center  font-base"
+            className=" text-[#666]   text-center  font-base mx-auto"
             dangerouslySetInnerHTML={{
               __html: sell,
             }}

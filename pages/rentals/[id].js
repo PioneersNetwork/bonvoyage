@@ -30,7 +30,7 @@ export default function Home({ id }) {
     );
   }
   return (
-    <div className="pt-[100px]  pb-16  xl:px-32 ">
+    <div className="pt-[100px]  pb-16  px-[16px] lg:px-32">
       <Head>
         <title key={meta.id}>{meta.title ? meta.title : "club"} </title>
         <meta name="description" content={meta.description}></meta>

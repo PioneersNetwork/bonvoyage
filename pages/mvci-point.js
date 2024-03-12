@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 export default function Home() {
   const [t, i18n] = useTranslation();
   return (
-    <div className="xl:px-32 px-8  lg:px-32">
+    <div className="px-[16px] lg:px-32">
       <Hotel />
       <Table />
       <p className="py-16 text-[#666]    font-bold">
@@ -260,7 +260,7 @@ const Hotel = () => {
             {t("Destinations Points Level")}
           </div>
 
-          <div className="flex justify-center flex-wrap">
+          <div className="flex justify-center flex-wrap mx-auto">
             {cards.map((val, index) => {
               return (
                 <Card
@@ -283,10 +283,10 @@ const Card = ({ image, name, sub, index }) => {
   const [t, i18n] = useTranslation();
 
   return (
-    <div className={`${index < 2 ? "lg:w-1/3 mx-4" : "lg:w-1/3"} w-full p-2`}>
-      <div className="flex justify-center mx-4 pb-8 cursor-pointer w-full ">
-        <div className="hover:scale-105  duration-300 ease-in w-full">
-          <img src={image} className=" h-[220px] w-full object-cover  " />
+    <div className={`${index < 2 ? "lg:w-1/3 " : "lg:w-1/3"} w-full p-2 overflow-hidden rounded`}>
+      <div className="flex justify-center mx-auto pb-8 cursor-pointer w-full ">
+        <div className="hover:scale-105 duration-300 ease-in w-full">
+          <img src={image} className=" max-h-[220px]  w-full object-cover  " />
           <div className="bg-main py-4 text-center text-white font-bold   text-lg ">
             {t(name)}
             <div className=" text-base font-medium">{t(sub)}</div>

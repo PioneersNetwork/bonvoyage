@@ -10,10 +10,10 @@ export default function Home() {
   const [t, i18n] = useTranslation();
 
   return (
-    <div className="xl:px-32 px-8  lg:px-32">
+    <div className="px-[16px] lg:px-32">
       <Hotel />
       <Table />
-      <div className="px-4 mt-8">
+      <div className="px-[16px] mt-8">
         <p className="pt-3 text-[#666]    font-base">
           {" "}
           * {t("Late checkout subject to availability at all hotels.")}
@@ -86,7 +86,7 @@ const Hotel = () => {
           />
         </div>
 
-        <div className=" w-full lg:w-2/3 px-6 lg:pt-4">
+        <div className=" w-full lg:w-2/3 lg:pt-4">
           <h2 className=" text-4xl  text-[#333] pb-4">
             {t("Marriott Bonvoy")}
           </h2>
@@ -143,7 +143,7 @@ const Table = () => {
   const [t, i18n] = useTranslation();
 
   return (
-    <div className="pt-8">
+    <div className="pt-8 overflow-x-auto px-[16px]">
       <p className="py-8 text-[#666] w-full text-center   font-bold">
         {t("BENEFITS AT A GLANCE Compare Elite Benefits")}
       </p>

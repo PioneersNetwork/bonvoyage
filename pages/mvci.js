@@ -34,7 +34,7 @@ export default function Home() {
   }
   if (data)
     return (
-      <div className="xl:px-32 px-8 lg:px-32 ">
+      <div className="px-[16px] lg:px-32">
         <Head>
           <title key={meta.id}>{meta.title ? meta.title : "club"} </title>
           <meta name="description" content={meta.description}></meta>

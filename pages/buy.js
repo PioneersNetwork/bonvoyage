@@ -25,7 +25,7 @@ export default function Home() {
     );
   }
   return (
-    <div className="xl:px-32 px-8 ">
+    <div className="px-[16px] lg:px-32">
       <Hotel data={data} clubs={clubs} />
       <MainForm
         header={"Looking for the right Timeshare?"}
@@ -77,13 +77,13 @@ const Hotel = ({ data, clubs }) => {
   return (
     <div className="pt-[100px] ">
       <div className="flex flex-wrap ">
-        <div className=" p-4 w-full lg:w-1/3">
+        <div className=" p-[16px] w-full lg:w-1/3">
           <Image
             src="/images/owners/1.png"
-            width={300}
+            width={400}
             alt="buy"
             height={600}
-            className="w-[300px] h- h-[600px] object-cover object-center m-auto"
+            className=" object-cover object-center m-auto"
           />
         </div>
 

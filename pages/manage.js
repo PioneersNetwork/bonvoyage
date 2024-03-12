@@ -34,7 +34,7 @@ export default function Home() {
     );
   }
   return (
-    <div className="xl:px-32 px-8  ">
+    <div className="px-[16px] lg:px-32">
       {isLoading && (
         <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center">
           <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
@@ -94,7 +94,7 @@ const Hotel = ({ data, clubs }) => {
         <div className=" p-4 w-full lg:w-1/3">
           <img
             src="/images/owners/1.png"
-            className="w-[300px] h[600px] object-cover object-center m-auto"
+            className="w-[400px] h[600px] object-cover object-center m-auto"
           />
         </div>
 

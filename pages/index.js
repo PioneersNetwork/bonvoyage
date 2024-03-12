@@ -751,8 +751,8 @@ const Services = () => {
           Our Services
         </h3>
         <div className="bg-[#333] w-[80px] h-[3px] m-auto  rounded-3xl mb-4"></div>
-        <div className="overflow-x-auto">
-        <div className="flex flex-wrap lg:mx-16  min-w-max">
+        <div className="overflow-x-auto w-full lg:overflow-hidden">
+        <div className="flex lg:flex-wrap min-w-max gap-[8px]  lg:gap-0 lg:w-full">
           {services.map((val) => {
             return (
               <ServicesCard
@@ -765,8 +765,8 @@ const Services = () => {
           })}
         </div>
         </div>
-        <div ref={counter} className="flex flex-wrap justify-center gap-[16px]  lg:mx-16">
-          <div className="text-center py-8 lg:w-1/3">
+        <div ref={counter} className="flex flex-wrap justify-center gap-[16px]  lg:mx-[16px]">
+          <div className="text-center py-8 mx-auto">
             <div>more Than</div>
             <div className=" text-6xl py-2">
               {counterin ? <Number n={300} /> : 300}
@@ -795,8 +795,8 @@ const Services = () => {
 
 const ServicesCard = ({ image, name, link }) => {
   return (
-    <Link href={link} className=" w-1/6">
-      <div className="flex justify-center lg:mx-3 mx-8 pb-8 cursor-pointer">
+    <Link href={link} className="w-[97.7vw] p-[16px] lg:p-[0px] lg:mx-0 mx-auto lg:w-[14%]">
+      <div className="flex justify-center lg:mx-[8px] pb-8 cursor-pointer  ">
         <div className="w-full">
           <img
             src={image}

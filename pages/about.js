@@ -22,10 +22,13 @@ const Hotel = () => {
     <div className="pt-[100px] ">
       <div className="flex flex-wrap ">
         <div className=" p-4 w-full lg:w-1/3">
-          <img
-            src="images/aboutus.png"
+        <img
+            src="/images/abd.jpg"
             className="w-full h[300px] object-cover object-center"
           />
+          <div className="text-center text-[#666] font-semibold">
+            {t("Travel is my passion")}
+          </div>
         </div>
 
         <div className=" w-full lg:w-2/3 px-6 lg:pt-4">
@@ -76,7 +79,7 @@ const Trans = () => {
   return (
     <div className="pt-[100px] ">
       <div className="flex flex-wrap ">
-        <div className=" w-full lg:w-2/3 px-6 lg:pt-4">
+        <div className=" w-full  px-6 lg:pt-4">
           <h2 className=" text-xl  text-[#333] pb-1">
             {t("Abdul Hamid Al Sabbagh")}
           </h2>
@@ -97,15 +100,7 @@ const Trans = () => {
             )}
           </p>
         </div>
-        <div className=" p-4 w-full lg:w-1/3">
-          <img
-            src="/images/abd.jpg"
-            className="w-full h[300px] object-cover object-center"
-          />
-          <div className="text-center text-[#666] font-semibold">
-            {t("Travel is my passion")}
-          </div>
-        </div>
+        
       </div>
     </div>
   );

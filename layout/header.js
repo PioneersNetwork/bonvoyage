@@ -151,7 +151,7 @@ const Header = () => {
               >
                 <div className="flex justify-between p-4   text-base ">
                   <div
-                    className=" font-bold uppercase"
+                    className="uppercase"
                     style={{ textShadow: "#000000b0 0 0 10px" }}
                   >
                     {t(el.name)}
@@ -189,22 +189,22 @@ const Header = () => {
         </ul>
         <div className="p-4 hidden lg:block">
           {i18n.language == "en" && (
-            <BsTranslate
-              className="text-white  text-lg hover:text-main cursor-pointer "
-              style={{ textShadow: "#000 0 0 10px" }}
+            <button
+              className="p-1 rounded bg-white text-black  text-[12px] hover:text-main cursor-pointer "
+              style={{ textShadow: "#000 0 0 10px",fontFamily:'Arial' }}
               onClick={() => {
                 changeLang("ar");
               }}
-            />
+            >AR</button>
           )}
           {i18n.language == "ar" && (
-            <BsTranslate
-              className="text-white  text-lg hover:text-main cursor-pointer "
+            <button
+              className="p-1 rounded bg-white text-black  text-[12px] hover:text-main cursor-pointer "
               style={{ textShadow: "#000 0 0 10px" }}
               onClick={() => {
                 changeLang("en");
               }}
-            />
+            >EN</button>
           )}
         </div>
         <a
@@ -228,7 +228,7 @@ const Header = () => {
                 key={el.name}
                 className={` ${open ? "block" : "hidden"} cursor-pointer`}
               >
-                <div className="  p-4  text-lg uppercase">
+                <div className="p-4  text-lg uppercase">
                   <a
                     className="pt-1 flex justify-between"
                     onClick={() => {
@@ -274,20 +274,21 @@ const Header = () => {
         </ul>
         <div className="px-4 pb-4">
           {i18n.language == "en" && (
-            <BsTranslate
-              className="text-white  text-lg"
+            <button
+            className="p-1 rounded bg-white text-black  text-[12px] hover:text-main cursor-pointer "
               onClick={() => {
                 changeLang("ar");
               }}
-            />
+            >AR</button>
           )}
           {i18n.language == "ar" && (
-            <BsTranslate
-              className="text-white  text-lg"
+            <button
+            className="p-1 rounded bg-white text-black  text-[12px] hover:text-main cursor-pointer "
+              
               onClick={() => {
                 changeLang("en");
               }}
-            />
+            >EN</button>
           )}
         </div>
       </div>

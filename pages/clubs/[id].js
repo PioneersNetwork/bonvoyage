@@ -93,11 +93,11 @@ export default function Home({ id }) {
       </Head>
       <Slider images={images} />
       <div className="  mx-auto pt-4 px-[16px] lg:px-32">
-        <ClubBody club={club} />
         <div className="flex flex-wrap">
-          {/* <Resort className="w-full lg:w-1/2 pt-8" club={club} />
-          <Apartments className="w-full lg:w-1/2 pt-8" club={club} /> */}
-          <Amenities club={club} />
+          <div className={`w-full ${club.calendar?'lg:w-6/12':''}`}>
+          <ClubBody club={club} />
+          </div>
+          <div className="w-full lg:w-6/12">
           {club.calendar && (
             <Availability
               club={club}
@@ -106,6 +106,15 @@ export default function Home({ id }) {
               calendars={calendars}
             />
           )}
+          </div>
+        </div>
+        
+        
+        <div className="flex flex-wrap">
+          {/* <Resort className="w-full lg:w-1/2 pt-8" club={club} />
+          <Apartments className="w-full lg:w-1/2 pt-8" club={club} /> */}
+          <Amenities club={club} />
+          
           <div className="w-full lg:w-1/2 pt-8">
             <iframe
               className=" w-full h-[340px]"
@@ -227,7 +236,7 @@ const Availability = ({ club, calendarRange, months, calendars }) => {
     "Des",
   ];
   return (
-    <div className="w-full lg:w-1/2 pt-8 p-4 ">
+    <div className="w-full p-4">
       <div className="border-[1px] border-black p-4">
         <h3 className=" text-4xl  text-black pb-6">{t("Availability")}</h3>
         <div className=" w-full flex p-2 overflow-x-auto bg-[#eee] ">

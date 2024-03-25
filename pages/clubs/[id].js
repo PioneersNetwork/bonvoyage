@@ -269,7 +269,7 @@ const Availability = ({ club, calendarRange, months, calendars }) => {
                     );
                   }}
                   key={val}
-                  className="p-1 px-3 mx-1  blink_me rounded-3xl text-main bg-gray-500"
+                  className="p-1 px-3 mx-1   rounded-3xl text-main bg-gray-800"
                 >
                   {monthsName[val.month]}
                 </button>

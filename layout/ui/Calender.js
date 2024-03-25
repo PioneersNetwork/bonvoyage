@@ -22,7 +22,7 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
           )
           .map((cal) => {
             return (
-              <div key={cal.start} className={`border-b p-2 duration-150   ${selectedCalander==cal?'bg-gray-100':''}` }>
+              <div key={cal.start} className={`border-b p-2 duration-150   ${selectedCalander==cal?'bg-gray-200':''}` }>
                 <div className="w-full">
                   <h1 className="text-[16px] font-bold">
                     {cal.name}
@@ -45,11 +45,7 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
               color="green"
               return { onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.start).day==date.day && new DateObject(e.start).month.name ==date.month.name))}, className: "start highlight highlight-" + color }
             }
-            if(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name==date.month.name))
-            {
-              color="red"
-              return {onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name ==date.month.name))}, className: "end highlight highlight-" + color }
-            }
+            
             
           }}
             minDate={new Date()}
@@ -75,11 +71,7 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
                 color="green"
                 return { onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.start).day==date.day && new DateObject(e.start).month.name ==date.month.name))}, className: "start highlight highlight-" + color }
               }
-              if(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name==date.month.name))
-              {
-                color="red"
-                return {onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name ==date.month.name))}, className: "end highlight highlight-" + color }
-              }
+              
               
             }}
               minDate={new Date()}

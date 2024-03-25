@@ -7,6 +7,7 @@ import { useSession, signOut } from "next-auth/react";
 
 import { toBase64 } from "@/utils/base64";
 import toast from "react-hot-toast";
+
 let window=null;
 export default function Home({ id }) {
   const { data: session, status } = useSession();

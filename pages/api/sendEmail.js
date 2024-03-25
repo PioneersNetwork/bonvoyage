@@ -33,7 +33,7 @@ export default async function Nodemailer(req, res) {
   async function sendEmail() {
     const info = await transporter.sendMail({
       from: `${req.body.name} <${req.body.email}>`, // sender address
-      to: "nael.muhanna.2001@gmail.com",
+      to: "support@bon-voyage.services",
       subject: req.body.subject, // Subject line
       html: `From : ${req.body.name} <br/>Email : ${
         req.body.email

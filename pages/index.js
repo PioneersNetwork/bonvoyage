@@ -46,6 +46,7 @@ const PopUpForm = ({ showDialog, setShowDiaolg }) => {
   const [phone, setPhone] = useState("");
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
+  const [message,setMessage]=useState();
   const sendEmail = async () => {
     const reqBody = {
       name: name,
@@ -59,8 +60,18 @@ const PopUpForm = ({ showDialog, setShowDiaolg }) => {
     console.log(reqBody);
     try {
       await axios.post("api/sendEmail", { ...reqBody });
+      setName("");
+      setEmail("");
+      setSubject("");
+      setCountry("");
+      setPhone("");
+      setText("");
+      setShowDiaolg(false);
+      setMessage({result:true,message:"Thank you for writing to us, we will respond as soon as possible"})
+      
     } catch (error) {
       console.log(error);
+      setMessage({result:false,message:error})
     }
   };
   const countries = data;
@@ -228,9 +239,9 @@ const PopUpForm = ({ showDialog, setShowDiaolg }) => {
                       {"to see how we protect and manage your submitted data."}
                     </h5>
                   </div>
-
+                  {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
                   <button
-                    type="submit"
+                    type="button"
                     id="submit-main"
                     className=" text-white p-3 px-5  bg-main"
                     onClick={sendEmail}
@@ -273,6 +284,7 @@ const ImageForm = () => {
   const [phone, setPhone] = useState("");
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
+  const [message,setMessage]=useState();
   const sendEmail = async () => {
     const reqBody = {
       name: name,
@@ -286,8 +298,16 @@ const ImageForm = () => {
     console.log(reqBody);
     try {
       await axios.post("/api/sendEmail", { ...reqBody });
+      setName("");
+      setEmail("");
+      setSubject("");
+      setCountry("");
+      setPhone("");
+      setText("");
+      setMessage({result:true,message:"Thank you for writing to us, we will respond as soon as possible"})
     } catch (error) {
       console.log(error);
+      setMessage({result:false,message:error})
     }
   };
   const countries = data;
@@ -520,9 +540,9 @@ const ImageForm = () => {
                     {"to see how we protect and manage your submitted data."}
                   </h5>
                 </div>
-
+                {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
                 <button
-                  type="submit"
+                  type="button"
                   id="submit-main"
                   className=" text-white p-3 px-5 rounded bg-[#886c3c]"
                   onClick={sendEmail}

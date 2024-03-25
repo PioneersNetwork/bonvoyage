@@ -29,6 +29,7 @@ const Footer = ({ showForm = false }) => {
   const [phone, setPhone] = useState("");
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
+  const [message,setMessage]=useState();
   const sendEmail = async () => {
     const reqBody = {
       name: name,
@@ -42,8 +43,16 @@ const Footer = ({ showForm = false }) => {
     console.log(reqBody);
     try {
       await axios.post("/api/sendEmail", { ...reqBody });
+      setName("");
+      setEmail("");
+      setSubject("");
+      setCountry("");
+      setPhone("");
+      setText("");
+      setMessage({result:true,message:"Thank you for writing to us, we will respond as soon as possible"})
     } catch (error) {
       console.log(error);
+      setMessage({result:false,message:error})
     }
   };
   showForm = router.route == "/";
@@ -248,8 +257,9 @@ const Footer = ({ showForm = false }) => {
                       data-callback="onSubmitFooter"
                       data-size="invisible"
                     ></div>
+                    {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
                     <button
-                      type="submit"
+                      type="button"
                       id="submit-footer"
                       className=" py-2 px-4 bg-main text-white my-3"
                       onClick={sendEmail}

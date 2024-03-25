@@ -65,7 +65,7 @@ export default function Home({ id }) {
           setCalendarRange((prev) => {
             let ranges = prev;
             ranges.push(range);
-            ranges.push(e.end);
+            
             return [...ranges];
           });
         });

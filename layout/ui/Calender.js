@@ -95,8 +95,8 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
           </>
         )}
         <div className="flex flex-wrap mt-[16px] gap-[8px] items-center text-[12px]">
-        <div className="w-[24px] h-[24px] rounded-full" style={{backgroundColor:'green'}}></div><div>Check-in</div>
-        <div className="w-[24px] h-[24px] rounded-full" style={{backgroundColor:'red'}}></div><div>Check-out</div>
+        <div className="w-[24px] h-[24px] rounded-full" style={{backgroundColor:'green'}}></div><div>Check-in Date</div>
+        
         </div>
       </div>
     </div>

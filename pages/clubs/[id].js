@@ -269,7 +269,7 @@ const Availability = ({ club, calendarRange, months, calendars }) => {
                     );
                   }}
                   key={val}
-                  className="p-1 px-3 mx-1   rounded-3xl text-main bg-gray-800"
+                  className="p-1 px-3 mx-1   rounded font-bold text-main bg-gray-800"
                 >
                   {monthsName[val.month]}
                 </button>

@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { Calendar, DateObject } from "react-multi-date-picker";
-
+import colors from "react-multi-date-picker/plugins/colors"
 export default function TheCalendar({ currentDate, calendarRange, calendars }) {
   const [update, setUpdate] = useState(true);
+  const [selectedCalander,setSelectedCalander]=useState();
   useEffect(() => {
-    console.log(currentDate.month);
+    
+    
     setUpdate(!update);
   }, [currentDate]);
-  console.log(calendars);
+  function showEvent(e)
+  {
+    setSelectedCalander(e);
+  }
   return (
     <div className="flex flex-wrap">
       <div className="w-[600px] lg:w-1/2 my-2">
@@ -17,7 +22,7 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
           )
           .map((cal) => {
             return (
-              <div key={cal.start} className="border-b p-2">
+              <div key={cal.start} className={`border-b p-2 duration-150   ${selectedCalander==cal?'bg-gray-100':''}` }>
                 <div className="w-full">
                   <h1 className="text-[16px] font-bold">
                     {cal.name}
@@ -32,32 +37,67 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
       <div className="w-[600px] lg:w-1/2 ">
         {!update && (
           <Calendar
+          mapDays={({date})=>{
+              
+            let color;
+            if(calendars.find((e)=>new DateObject(e.start).day==date.day && new DateObject(e.start).month.name ==date.month.name))
+            {
+              color="green"
+              return { onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.start).day==date.day && new DateObject(e.start).month.name ==date.month.name))}, className: "start highlight highlight-" + color }
+            }
+            if(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name==date.month.name))
+            {
+              color="red"
+              return {onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name ==date.month.name))}, className: "end highlight highlight-" + color }
+            }
+            
+          }}
             minDate={new Date()}
-            showOtherDays
+            
             currentDate={currentDate}
             className="scale-x-105 w-full"
-            buttons={false}
+            
             readOnly
             value={calendarRange}
             multiple
-            range
+            
           />
         )}
         {update && (
           <>
             <Calendar
+            
+            mapDays={({date})=>{
+              
+              let color;
+              if(calendars.find((e)=>new DateObject(e.start).day==date.day && new DateObject(e.start).month.name ==date.month.name))
+              {
+                color="green"
+                return { onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.start).day==date.day && new DateObject(e.start).month.name ==date.month.name))}, className: "start highlight highlight-" + color }
+              }
+              if(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name==date.month.name))
+              {
+                color="red"
+                return {onClick:()=>{showEvent(calendars.find((e)=>new DateObject(e.end).day==date.day && new DateObject(e.end).month.name ==date.month.name))}, className: "end highlight highlight-" + color }
+              }
+              
+            }}
               minDate={new Date()}
-              showOtherDays
+              
               currentDate={currentDate}
               className="scale-x-105 w-full"
-              buttons={false}
+              
               readOnly
               value={calendarRange}
               multiple
-              range
+              
             />
           </>
         )}
+        <div className="flex flex-wrap mt-[16px] gap-[8px] items-center text-[12px]">
+        <div className="w-[24px] h-[24px] rounded-full" style={{backgroundColor:'green'}}></div><div>Check-in</div>
+        <div className="w-[24px] h-[24px] rounded-full" style={{backgroundColor:'red'}}></div><div>Check-out</div>
+        </div>
       </div>
     </div>
   );

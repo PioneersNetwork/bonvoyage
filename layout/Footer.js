@@ -138,7 +138,10 @@ const Footer = ({ showForm = false }) => {
               </div>
               {showForm ? (
                 <div>
-                  <form id="contact-form-footer" className="validate-form">
+                  <form id="contact-form-footer" className="validate-form" onSubmit={(e)=>{
+                    e.preventDefault();
+                    sendEmail();
+                  }}>
                     <div className="row lg:flex gap-2">
                       <div
                         className="mb-2 lg:w-1/2"
@@ -259,10 +262,10 @@ const Footer = ({ showForm = false }) => {
                     ></div>
                     {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
                     <button
-                      type="button"
+                      type="submit"
                       id="submit-footer"
                       className=" py-2 px-4 bg-main text-white my-3"
-                      onClick={sendEmail}
+                      
                     >
                       {t("Send Email")}
                     </button>

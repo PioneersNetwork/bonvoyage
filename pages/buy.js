@@ -113,7 +113,7 @@ const Hotel = ({ data, clubs }) => {
               <ClubCard
                 key={val.id}
                 name={val.title}
-                link={"/club/" + val.id}
+                link={"/clubs/" + val.id}
                 image={"/images/" + val.logo}
                 buy={val.buy}
               />

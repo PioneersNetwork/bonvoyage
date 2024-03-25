@@ -72,7 +72,10 @@ export default function MainForm({ header, body, hideGIf = false }) {
       </div>
 
       <div>
-        <form id="contact-form-main" className="validate-form">
+        <form id="contact-form-main" className="validate-form" onSubmit={(e)=>{
+          e.preventDefault();
+          sendEmail();
+        }}>
           <div className="">
             <input
               className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
@@ -200,10 +203,10 @@ export default function MainForm({ header, body, hideGIf = false }) {
           </div>
           {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
           <button
-            type="button"
+            type="submit"
             id="submit-main"
             className=" text-white p-3 px-5  bg-main"
-            onClick={sendEmail}
+            
           >
             {t("Send Email")}
           </button>

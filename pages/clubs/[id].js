@@ -59,11 +59,13 @@ export default function Home({ id }) {
 
             console.log(months);
           }
-          var range = [e.start, e.end];
+          var range = e.start;
+
 
           setCalendarRange((prev) => {
             let ranges = prev;
             ranges.push(range);
+            ranges.push(e.end);
             return [...ranges];
           });
         });
@@ -236,6 +238,17 @@ const Availability = ({ club, calendarRange, months, calendars }) => {
     "Nov",
     "Des",
   ];
+  useEffect(()=>{
+    if(months.length!=0)
+    {
+      SetMonth({...months[0]});
+      setMc(new DateObject({
+        month: months[0].month + 1,
+        year: months[0].year,
+        day: 1,
+      }))
+    }
+  },[])
   return (
     <div className="w-full p-4">
       <div className="border-[1px] border-black p-4">
@@ -332,7 +345,10 @@ const MiniForm = () => {
       </div>
 
       <div>
-        <form id="contact-form-main" className="validate-form">
+        <form id="contact-form-main" className="validate-form" onSubmit={(e)=>{
+          e.preventDefault();
+          sendEmail();
+        }}>
           <div className="">
             <input
             value={name}
@@ -450,8 +466,8 @@ const MiniForm = () => {
           </div>
           {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
           <button
-            type="button"
-            onClick={()=>{sendEmail()}}
+            type="submit"
+            
             id="submit-main"
             className=" text-white p-3 px-5  bg-main"
           >

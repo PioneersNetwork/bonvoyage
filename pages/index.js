@@ -103,7 +103,10 @@ const PopUpForm = ({ showDialog, setShowDiaolg }) => {
                     }
                   </p>
                 </h3>
-                <form id="contact-form-main" className="validate-form">
+                <form id="contact-form-main" className="validate-form" onSubmit={(e)=>{
+                  e.preventDefault();
+                  sendEmail();
+                }}>
                   <div className="">
                     <input
                       className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
@@ -241,10 +244,10 @@ const PopUpForm = ({ showDialog, setShowDiaolg }) => {
                   </div>
                   {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
                   <button
-                    type="button"
+                    type="submit"
                     id="submit-main"
                     className=" text-white p-3 px-5  bg-main"
-                    onClick={sendEmail}
+                    
                   >
                     {"Send Email"}
                   </button>
@@ -411,7 +414,10 @@ const ImageForm = () => {
               <h4 className=" text-xl font-bold text-white py-3">
                 {"GET IN TOUCH WITH US!"}
               </h4>
-              <form id="contact-form-main" className="validate-form">
+              <form id="contact-form-main" className="validate-form" onSubmit={(e)=>{
+                e.preventDefault();
+                sendEmail();
+              }}>
                 <div className="">
                   <input
                     className="w-full p-2 rounded-md my-2 px-4"
@@ -542,10 +548,10 @@ const ImageForm = () => {
                 </div>
                 {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
                 <button
-                  type="button"
+                  type="submit"
                   id="submit-main"
                   className=" text-white p-3 px-5 rounded bg-[#886c3c]"
-                  onClick={sendEmail}
+                  
                 >
                   {"Send Email"}
                 </button>

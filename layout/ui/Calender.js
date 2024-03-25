@@ -22,14 +22,14 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
           )
           .map((cal) => {
             return (
-              <div key={cal.start} className={`border-b p-2 duration-150   ${selectedCalander==cal?'bg-gray-200':''}` }>
+              <div key={cal.start} className={`border-b p-2 duration-150 mt-3  ${selectedCalander==cal?'bg-gray-200':''}` }>
                 <div className="w-full">
                   <h1 className="text-[16px] font-bold">
                     {cal.name}
                   </h1>
-                  <small className="pb-0 text-gray-600 text-[9px] font-sans">{new DateObject(cal.start).format('ddd, DD MMM YYYY')} to {new DateObject(cal.end).format('ddd, DD MMM YYYY')}</small>
+                  <small className="pb-0 text-gray-600 text-[14px] font-sans">{new DateObject(cal.start).format('ddd, DD MMM YYYY')} to {new DateObject(cal.end).format('ddd, DD MMM YYYY')}</small>
                 </div>
-                <div className="text-[14px]">{cal.description}</div>
+                <div className="text-[16px] mt-2">{cal.description}</div>
               </div>
             );
           })}

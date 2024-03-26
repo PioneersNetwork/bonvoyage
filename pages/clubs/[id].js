@@ -261,32 +261,9 @@ const Availability = ({ club, calendarRange, months, calendars }) => {
     <div className="w-full p-4">
       <div className="border-[1px] border-black p-4">
         <h3 className=" text-4xl  text-black pb-6">{t("Availability")}</h3>
-        <div className=" w-full flex p-2 overflow-x-auto bg-[#eee] ">
-          {months.map((val) => {
-            return (
-              <>
-                <button
-                  onClick={() => {
-                    SetMonth({ ...val });
-                    setMc(
-                      new DateObject({
-                        month: val.month + 1,
-                        year: val.year,
-                        day: 1,
-                      })
-                    );
-                  }}
-                  key={val}
-                  className="p-1 px-3 mx-1   rounded font-bold text-main bg-gray-800"
-                >
-                  {monthsName[val.month]}
-                </button>
-              </>
-            );
-          })}
-        </div>
+        
 
-        <p className="pt-3 text-[#666] font-base">
+        <p className="text-[#666] font-base">
           <TheCalendar
             currentDate={mc}
             calendarRange={calendarRange}

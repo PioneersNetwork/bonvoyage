@@ -15,15 +15,29 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
           e.year == currentDate.year
       ),
     ]);
-    console.log(currentDate.year);
+    
     setUpdate(!update);
   }, [currentDate]);
+
+
   function showEvent(e) {
     setSelectedCalander(e);
   }
+
+
+  function changeMonth(month)
+  {
+    setSelectedCalanders([
+      ...calendars.filter(
+        (e) =>
+          e.month === month.month.number &&
+          e.year == month.year
+      ),
+    ]);
+  }
   return (
-    <div className="flex flex-wrap">
-      <div className="w-[600px] lg:w-1/2 my-2">
+    <div className="flex flex-wrap-reverse">
+      <div className="w-[600px] lg:w-1/2">
         {selectedCalanders.map((cal,k) => {
           return (
             <div
@@ -46,7 +60,9 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
       </div>
       <div className="w-[600px] lg:w-1/2 ">
         {!update && (
+          <div className="mx-auto">
           <Calendar
+          onMonthChange={(e)=>changeMonth(e)}
             mapDays={({ date }) => {
               let color;
               if (
@@ -71,18 +87,20 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
                 };
               }
             }}
-            buttons={false}
+            
             minDate={new Date()}
             currentDate={currentDate}
-            className="scale-x-105 w-full"
+            className="w-full mx-auto"
             readOnly
             value={calendarRange}
             multiple
           />
+          </div>
         )}
         {update && (
-          <>
+          <div className="mx-auto">
             <Calendar
+            onMonthChange={(e)=>changeMonth(e)}
               mapDays={({ date }) => {
                 let color;
                 if (
@@ -108,15 +126,15 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
                   };
                 }
               }}
-              buttons={false}
+              
               minDate={new Date()}
               currentDate={currentDate}
-              className="scale-x-105 w-full"
+              className="w-full mx-auto"
               readOnly
               value={calendarRange}
               multiple
             />
-          </>
+          </div>
         )}
         <div className="flex flex-wrap mt-[16px] gap-[8px] items-center text-[12px]">
           <div

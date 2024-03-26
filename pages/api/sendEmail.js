@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
-  host: "mail.pioneers.network",
+  host: "mail.bon-voyage.services",
   port: 465,
   secure: true,
   auth: {

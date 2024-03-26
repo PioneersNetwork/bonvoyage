@@ -27,15 +27,18 @@ export default function Home({ id }) {
 
   useEffect(() => {
     setClub();
+    setCalenders([]);
+    setCalendarRange([]);
+    setMonths([]);
+    let theCalendars = [];
     getData(id).then((val) => {
       setClub(val.club[0]);
       setMeta(val.meta[0]);
+      console.log(val.club[0].calendar);
       if (val.club[0].calendar?.length) {
-        setCalenders([]);
-        setCalendarRange([]);
-        setMonths([]);
+        
         let oldMonths = [];
-        let theCalendars = [];
+        
         val.club[0].calendar.forEach((e, i) => {
           theCalendars.push({
             ...e,
@@ -57,20 +60,20 @@ export default function Home({ id }) {
               year: new Date(e.start).getFullYear(),
             });
 
-            console.log(months);
+            
           }
           var range = e.start;
-
 
           setCalendarRange((prev) => {
             let ranges = prev;
             ranges.push(range);
-            
+
             return [...ranges];
           });
         });
         setMonths(oldMonths);
-        setCalenders(theCalendars);
+        setCalenders([...theCalendars]);
+        console.log(calendars);
       }
       setImages(
         val.picture.map((val) => {
@@ -83,7 +86,12 @@ export default function Home({ id }) {
   if (images.length == 0 || !club) {
     return (
       <div className="fixed bg-black w-full h-full left-0 top-0 flex justify-center items-center z-50">
-        <Image className="animate-pulse" src={"/images/icons/logo.svg"} width={100} height={70} />
+        <Image
+          className="animate-pulse"
+          src={"/images/icons/logo.svg"}
+          width={100}
+          height={70}
+        />
       </div>
     );
   }
@@ -97,27 +105,26 @@ export default function Home({ id }) {
       <Slider images={images} />
       <div className="  mx-auto pt-4 px-[16px] lg:px-32">
         <div className="flex flex-wrap">
-          <div className={`w-full ${club.calendar?'lg:w-6/12':''}`}>
-          <ClubBody club={club} />
+          <div className={`w-full ${club.calendar ? "lg:w-6/12" : ""}`}>
+            <ClubBody club={club} />
           </div>
           <div className="w-full lg:w-6/12">
-          {club.calendar && (
-            <Availability
-              club={club}
-              calendarRange={calendarRange}
-              months={months}
-              calendars={calendars}
-            />
-          )}
+            {club.calendar && (
+              <Availability
+                club={club}
+                calendarRange={calendarRange}
+                months={months}
+                calendars={calendars}
+              />
+            )}
           </div>
         </div>
-        
-        
+
         <div className="flex flex-wrap">
           {/* <Resort className="w-full lg:w-1/2 pt-8" club={club} />
           <Apartments className="w-full lg:w-1/2 pt-8" club={club} /> */}
           <Amenities club={club} />
-          
+
           <div className="w-full lg:w-1/2 pt-8">
             <iframe
               className=" w-full h-[340px]"
@@ -238,17 +245,18 @@ const Availability = ({ club, calendarRange, months, calendars }) => {
     "Nov",
     "Des",
   ];
-  useEffect(()=>{
-    if(months.length!=0)
-    {
-      SetMonth({...months[0]});
-      setMc(new DateObject({
-        month: months[0].month + 1,
-        year: months[0].year,
-        day: 1,
-      }))
+  useEffect(() => {
+    if (months.length != 0) {
+      SetMonth({ ...months[0] });
+      setMc(
+        new DateObject({
+          month: months[0].month + 1,
+          year: months[0].year,
+          day: 1,
+        })
+      );
     }
-  },[])
+  }, []);
   return (
     <div className="w-full p-4">
       <div className="border-[1px] border-black p-4">
@@ -301,9 +309,9 @@ const MiniForm = () => {
   const [phone, setPhone] = useState("");
   const [text, setText] = useState("");
   const [subject, setSubject] = useState("");
-  const [message,setMessage]=useState();
+  const [message, setMessage] = useState();
   const sendEmail = async () => {
-    console.log('test');
+    console.log("test");
     const reqBody = {
       name: name,
       email: email,
@@ -322,10 +330,14 @@ const MiniForm = () => {
       setCountry("");
       setPhone("");
       setText("");
-      setMessage({result:true,message:"Thank you for writing to us, we will respond as soon as possible"})
+      setMessage({
+        result: true,
+        message:
+          "Thank you for writing to us, we will respond as soon as possible",
+      });
     } catch (error) {
       console.log(error);
-      setMessage({result:false,message:error})
+      setMessage({ result: false, message: error });
     }
   };
   return (
@@ -345,14 +357,20 @@ const MiniForm = () => {
       </div>
 
       <div>
-        <form id="contact-form-main" className="validate-form" onSubmit={(e)=>{
-          e.preventDefault();
-          sendEmail();
-        }}>
+        <form
+          id="contact-form-main"
+          className="validate-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            sendEmail();
+          }}
+        >
           <div className="">
             <input
-            value={name}
-            onChange={(e)=>{setName(e.target.value)}}
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
               className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
               type="text"
               name="name"
@@ -362,8 +380,10 @@ const MiniForm = () => {
           </div>
           <div className="">
             <input
-            value={email}
-            onChange={(e)=>{setEmail(e.target.value)}}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
               type="email"
               name="email"
@@ -376,8 +396,10 @@ const MiniForm = () => {
             <div className="flex flex-wrap  ">
               <div className=" lg:w-1/2 w-full lg:pr-2">
                 <select
-                value={country}
-                onChange={(e)=>{setCountry(e.target.value)}}
+                  value={country}
+                  onChange={(e) => {
+                    setCountry(e.target.value);
+                  }}
                   className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
                   name="phonecode"
                   required
@@ -396,8 +418,10 @@ const MiniForm = () => {
               </div>
               <div className="lg:w-1/2 w-full lg:pl-2">
                 <input
-                value={phone}
-                onChange={(e)=>{setPhone(e.target.value)}}
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                  }}
                   className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
                   type="number"
                   name="phone"
@@ -411,10 +435,10 @@ const MiniForm = () => {
           <div className=" mb-3">
             <div className="w-full">
               <select
-              value={subject}
-              onChange={(e)=>{
-                setSubject(e.target.value);
-              }}
+                value={subject}
+                onChange={(e) => {
+                  setSubject(e.target.value);
+                }}
                 className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
                 name="subject"
               >
@@ -434,8 +458,10 @@ const MiniForm = () => {
             data-validate="Message is required"
           >
             <textarea
-            value={text}
-            onChange={(e)=>{setText(e.target.value)}}
+              value={text}
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
               className="w-full p-2 rounded-md my-2 px-4 border-[#ccc] border-[1px]  focus-visible:border-main focus-visible:border-[1px]"
               name="content"
               placeholder="Your Message"
@@ -464,10 +490,17 @@ const MiniForm = () => {
               {t("to see how we protect and manage your submitted data.")}
             </h5>
           </div>
-          {message && <div className={`${message.result?'text-green-500':'text-red-500'} bg-white p-2 rounded my-1`}>{message.message}</div>}
+          {message && (
+            <div
+              className={`${
+                message.result ? "text-green-500" : "text-red-500"
+              } bg-white p-2 rounded my-1`}
+            >
+              {message.message}
+            </div>
+          )}
           <button
             type="submit"
-            
             id="submit-main"
             className=" text-white p-3 px-5  bg-main"
           >

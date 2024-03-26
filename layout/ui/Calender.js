@@ -38,6 +38,7 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
   return (
     <div className="flex flex-wrap-reverse">
       <div className="w-[600px] lg:w-1/2">
+        {selectedCalanders.length==0 &&<div className="text-center mt-3"> Not Available</div>}
         {selectedCalanders.map((cal,k) => {
           return (
             <div
@@ -136,10 +137,10 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
             />
           </div>
         )}
-        <div className="flex flex-wrap mt-[16px] gap-[8px] items-center text-[12px]">
+        <div className="flex flex-wrap mt-[16px] gap-[8px] items-center text-[12px] mx-[16px]">
           <div
             className="w-[24px] h-[24px] rounded-full"
-            style={{ backgroundColor: "green" }}
+            style={{ backgroundColor: "#009688" }}
           ></div>
           <div>Check-in Date</div>
         </div>

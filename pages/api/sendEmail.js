@@ -1,11 +1,11 @@
 const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
-  host: "mail.bon-voyage.services",
+  host: "email-smtp.us-east-1.amazonaws.com",
   port: 465,
   secure: true,
   auth: {
-    user: "naeltest@bon-voyage.services",
-    pass: "9p4p;{VG7~jC",
+    user: "AKIA5DVZCVKAL6TCKU22",
+    pass: "BAoQYS6r9Ioh4EBKdY3Lz2+/CfgndweK+uufpF8Xx7R1",
   },
 });
 export default async function Nodemailer(req, res) {
@@ -32,7 +32,7 @@ export default async function Nodemailer(req, res) {
   console.log(code.join(""));
   async function sendEmail() {
     const info = await transporter.sendMail({
-      from: `${req.body.name} <${req.body.email}>`, // sender address
+      from: `support@bon-voyage.services`, // sender address
       to: "support@bon-voyage.services",
       subject: req.body.subject, // Subject line
       html: `From : ${req.body.name} <br/>Email : ${

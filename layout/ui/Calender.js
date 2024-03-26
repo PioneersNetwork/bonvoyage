@@ -71,6 +71,7 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
                 };
               }
             }}
+            buttons={false}
             minDate={new Date()}
             currentDate={currentDate}
             className="scale-x-105 w-full"
@@ -107,6 +108,7 @@ export default function TheCalendar({ currentDate, calendarRange, calendars }) {
                   };
                 }
               }}
+              buttons={false}
               minDate={new Date()}
               currentDate={currentDate}
               className="scale-x-105 w-full"
